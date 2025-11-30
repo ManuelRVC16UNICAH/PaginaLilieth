@@ -258,30 +258,91 @@
       </div>
     </section>
 
-    <!-- SIMULADORES -->
-    <section id="simuladores" class="section alt">
-      <div class="container">
-        <h2>Simuladores</h2>
+<!-- SIMULADORES -->  
 
-        <div class="simulators">
+<section id="simuladores" class="section alt">  
+  <div class="container">  
+    <h2 style="text-align:center; color:#0A6A46; margin-bottom:2rem;">Simuladores</h2>  
 
-          <div class="sim-card card">
-            <img src="./Img/simuladorr.jpeg">
-            <h4>Simulador de préstamo</h4>
-            <p>Calcula cuotas fácilmente.</p>
-          </div>
+  
 
-          <div class="sim-card card">
-            <h4>Convertidor USD–LPS</h4>
-            <ul>
-              <li>Venta: L 26.4396</li>
-              <li>Compra: L 26.3081</li>
-            </ul>
-          </div>
+<!-- Calculadora de valor futuro -->  
+<div class="calc-card card" style="max-width:400px; margin:2rem auto; padding:1.5rem;">  
+  <h3 style="text-align:center; color:#0A6A46; margin-bottom:1rem;">Calculadora de préstamos</h3>  
+
+  <label for="prestamo">Monto del préstamo (L.):</label>  
+  <input id="prestamo" type="number" class="input" placeholder="Ej. 7000"/>  
+
+  <label for="interes">Tasa de interés anual (%):</label>  
+  <input id="interes" type="number" step="0.01" class="input" placeholder="Ej. 12.5"/>  
+
+  <label for="periodos">Número de periodos </label>  
+  <input id="periodos" type="number" class="input" placeholder="Ej. 36"/>  
+
+  <div style="display:flex; gap:0.5rem; margin-top:1rem;">  
+    <button id="calcular" class="btn" style="flex:1;">Calcular</button>  
+    <button id="limpiar" class="btn" style="flex:1; background:#f5f5f5; color:#0A6A46; box-shadow:none;">Limpiar</button>  
+  </div>  
+
+  <p id="resultado" style="margin-top:1rem; font-weight:bold; text-align:center; color:#0A6A46;"></p>  
+</div>  
+```
+
+  </div>  
+
+  <!-- Script para funcionalidad de la calculadora -->  
+
+  <script>  
+    const prestamoInput = document.getElementById('prestamo');  
+    const interesInput = document.getElementById('interes');  
+    const periodosInput = document.getElementById('periodos');  
+    const resultado = document.getElementById('resultado');  
+
+    document.getElementById('calcular').addEventListener('click', function(){  
+      const prestamo = parseFloat(prestamoInput.value);  
+      const interes = parseFloat(interesInput.value) / 100;  
+      const periodos = parseInt(periodosInput.value);  
+
+      if(isNaN(prestamo) || isNaN(interes) || isNaN(periodos)){  
+        resultado.textContent = "Por favor ingresa todos los valores.";  
+        return;  
+      }  
+
+      const vf = prestamo * Math.pow(1 + (interes/12), periodos);  
+      resultado.textContent = "Valor Futuro: L " + vf.toFixed(2);  
+    });  
+
+    document.getElementById('limpiar').addEventListener('click', function(){  
+      prestamoInput.value = "";  
+      interesInput.value = "";  
+      periodosInput.value = "";  
+      resultado.textContent = "";  
+    });  
+  </script>  
+
+</section>  
+
+          
 
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- SUCURSALES -->
     <section id="sucursales" class="section">
