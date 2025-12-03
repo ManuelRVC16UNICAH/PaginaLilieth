@@ -268,3 +268,16 @@ a:focus, button:focus{ outline: 3px solid rgba(10,106,70,0.14); outline-offset:3
   text-align: center;
   
 }
+
+.input{
+  width:100%;
+  padding:0.6rem;
+  margin:0.4rem 0 1rem;
+  border:1px solid rgba(10,62,99,0.2);
+  border-radius:10px;
+  font-size:1rem;
+}
+.tarjeta-nombre {
+  color: #0A6A46; /* Verde institucional */
+  font-weight: 700; /* Opcional: resaltar más */
+}
